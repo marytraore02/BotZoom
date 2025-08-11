@@ -1,0 +1,14 @@
+.vscode
+node_modules
+.env
+
+sdk-web-frontend/.env
+sdk-auth-backend/.env
+sdk-web-frontend/node_modules
+sdk-auth-backend/node_modules
+sdk-web-frontend/.vscode
+sdk-auth-backend/.vscode
+sdk-web-frontend/dist
+sdk-auth-backend/dist
+sdk-web-frontend/js/dist
+sdk-auth-backend/src/dist
