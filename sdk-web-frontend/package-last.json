@@ -1,0 +1,29 @@
+{
+  "name": "websdk-cdn",
+  "version": "3.13.2",
+  "description": "Zoom sample app for MeetingSDK-Web client view",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=development && set BABEL_ENV=development && node corp.js --corp",
+    "https": "set NODE_ENV=development && set BABEL_ENV=development && node corp.js --corp --https"
+  },
+  "author": "Zoom Communications, Inc.",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "webpack": "^5.99.6",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "puppeteer": "^24.16.0",
+    "puppeteer-core": "^24.15.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-adblocker": "^2.13.6",
+    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "puppeteer-stream": "^3.0.20"
+  }
+}

@@ -1,0 +1,32 @@
+services:
+  zoomsdk-frontend:
+    build:
+      context: ./sdk-web-frontend
+      dockerfile: Dockerfile
+    container_name: zoomsdk-frontend
+    restart: unless-stopped
+    ports:
+      - "9999:9999"
+      - "9998:9998"
+    volumes:
+      - ./sdk-web-frontend:/usr/src/app
+    depends_on:
+      - zoomsdk-backend
+
+
+  zoomsdk-backend:
+      build:
+        context: ./sdk-auth-backend
+        dockerfile: Dockerfile
+      container_name: zoomsdk-backend
+      restart: unless-stopped
+      # Augmente la taille de la mémoire partagée, important pour Chrome dans Docker
+      shm_size: '2gb'
+      ports:
+        - "4000:4000"
+      env_file:
+        - ./sdk-auth-backend/.env
+      volumes:
+        - ./sdk-auth-backend:/usr/src/app
+        # Montage du dossier recordings pour persister les enregistrements
+        - ./sdk-auth-backend/recordings:/usr/src/app/recordings
