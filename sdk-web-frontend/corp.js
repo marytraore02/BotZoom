@@ -35,15 +35,15 @@ new WebpackDevServer(
     proxy: [
       {
         path: '/join',
-        // target: 'http://zoomsdk-backend:4000',
-        target: 'http://127.0.0.1:4000',
+        target: 'http://zoomsdk-backend:4000',
+        // target: 'http://127.0.0.1:4000',
         changeOrigin: true,
       },
       {
         path: '/meeting.html',
-        // target: 'http://zoomsdk-frontend:9999/'
-        // target: 'http://zoomsdk-frontend:9998/'
-        target: 'http://127.0.0.1:9998'
+        // target: 'http://zoomsdk-frontend:9999'
+        target: 'http://zoomsdk-frontend:9998/'
+        // target: 'http://127.0.0.1:9998'
       }
     ],
     static: './',

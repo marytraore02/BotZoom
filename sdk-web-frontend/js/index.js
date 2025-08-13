@@ -9,8 +9,8 @@ function websdkready() {
   if (testTool.isMobileDevice()) {
     const vConsole = new VConsole();
   }
-  // const authEndpoint = "http://zoomsdk-backend:4000";
-  const authEndpoint = "http://127.0.0.1:4000";
+  const authEndpoint = "http://zoomsdk-backend:4000";
+  // const authEndpoint = "http://127.0.0.1:4000";
   let CLIENT_ID = "xGisAVkQw6iZsCgiQsFNA";
 
   //https://developers.zoom.us/docs/meeting-sdk/auth/#signature
