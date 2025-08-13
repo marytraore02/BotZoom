@@ -6,13 +6,15 @@ services:
     container_name: zoomsdk-frontend
     restart: unless-stopped
     ports:
-      - "9999:9999"
-      - "9998:9998"
+      - "127.0.0.1:9999:9999"
+      - "127.0.0.1:9998:9998"
     volumes:
       - ./sdk-web-frontend:/usr/src/app
     depends_on:
       - zoomsdk-backend
-
+    # depends_on:
+    #   zoomsdk-backend:
+    #     condition: service_healthy
 
   zoomsdk-backend:
       build:
@@ -28,5 +30,63 @@ services:
         - ./sdk-auth-backend/.env
       volumes:
         - ./sdk-auth-backend:/usr/src/app
-        # Montage du dossier recordings pour persister les enregistrements
         - ./sdk-auth-backend/recordings:/usr/src/app/recordings
+      # healthcheck:
+      #   test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      #   interval: 10s
+      #   timeout: 5s
+      #   retries: 5
+      #   start_period: 5s
+
+
+
+
+
+
+# version: '3.8'
+
+# services:
+#   zoomsdk-frontend:
+#     build:
+#       context: ./sdk-web-frontend
+#       dockerfile: Dockerfile
+#     container_name: zoomsdk-frontend
+#     restart: unless-stopped
+#     ports:
+#       - "127.0.0.1:9999:9999"
+#       - "127.0.0.1:9998:9998"
+#     volumes: # À retirer en production
+#       - ./sdk-web-frontend:/usr/src/app
+#     depends_on:
+#       zoomsdk-backend:
+#         condition: service_healthy
+#     networks:
+#       - zoom-network
+
+#   zoomsdk-backend:
+#     build:
+#       context: ./sdk-auth-backend
+#       dockerfile: Dockerfile
+#     container_name: zoomsdk-backend
+#     restart: unless-stopped
+#     shm_size: '2gb'
+#     env_file:
+#       - ./sdk-auth-backend/.env
+#     volumes:
+#       # - ./sdk-auth-backend:/usr/src/app # À retirer en production
+#       - recordings:/usr/src/app/recordings
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+#       interval: 10s
+#       timeout: 5s
+#       retries: 5
+#       start_period: 10s
+#     networks:
+#       - zoom-network
+
+# volumes:
+#   recordings:
+
+# networks:
+#   zoom-network:
+#     driver: bridge

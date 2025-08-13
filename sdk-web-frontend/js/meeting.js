@@ -141,12 +141,12 @@ async function websdkready() {
             setTimeout(() => {
               joinBtn.click();
               console.log('✅ Bouton "Join" cliqué automatiquement');
-            }, 5000);
+            }, 2000);
         
 
 
-        }, 5000);
-      }, 5000);
+        }, 2000);
+      }, 3000);
     } else {
       setTimeout(waitForMediaControlsAndClick, 500);
     }
